@@ -5,7 +5,7 @@
  */
 
 /*global window, chrome */
-/*global permissions_request, bind_bookmarks_listeners, bind_storage_listeners */
+/*global bind_bookmarks_listeners, bind_storage_listeners */
 
 (function () {
 
@@ -131,6 +131,6 @@
   redraw_font_size_selector();
   bind_storage_listeners(redraw_font_size_selector);
 
-  permissions_request(bookmarks_root_element, init_bookmarks);
+  init_bookmarks();
 
 }());

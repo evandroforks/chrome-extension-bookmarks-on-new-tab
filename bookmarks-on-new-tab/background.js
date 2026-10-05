@@ -10,8 +10,8 @@
 
   'use strict';
 
-  chrome.browserAction.onClicked.addListener(function () {
-    chrome.tabs.update(null, {url: 'chrome://newtab/'});
+  chrome.action.onClicked.addListener(function (tab) {
+    chrome.tabs.update(tab.id, {url: 'chrome://newtab/'});
   });
 
 }());

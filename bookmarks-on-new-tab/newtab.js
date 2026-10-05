@@ -4,8 +4,8 @@
  * MIT License [http://www.opensource.org/licenses/mit-license.php]
  */
 
-/*global window, chrome */
-/*global permissions_request, bind_bookmarks_listeners, bind_storage_listeners, url_openner */
+/*global window, chrome, URL */
+/*global bind_bookmarks_listeners, bind_storage_listeners, url_openner */
 
 'use strict';
 
@@ -35,7 +35,10 @@
       var text;
       if (v.url) {
         var img = document.createElement('img');
-        img.src = 'chrome://favicon/size/16@1x/' + v.url;
+        var favicon_url = new URL(chrome.runtime.getURL('/_favicon/'));
+        favicon_url.searchParams.set('pageUrl', v.url);
+        favicon_url.searchParams.set('size', '16');
+        img.src = favicon_url.href;
         var item = div('item');
         text = div('jail');
         var label = div('jail-text');
@@ -120,6 +123,6 @@
 
   set_font_size();
 
-  permissions_request(bookmarks_root_element, init_bookmarks);
+  init_bookmarks();
 
 }());

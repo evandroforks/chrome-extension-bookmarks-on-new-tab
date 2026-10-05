@@ -1,11 +1,15 @@
 Ultra light new tab Google chrome extension
 ===========================================
 
-Overview, reviews, install:
-[Google Chrome store](https://chrome.google.com/webstore/detail/ultra-light-newtab-page-w/jmggnmiangppjceogakhdmafabilpmof)
+The original Chrome Web Store listing is no longer available. To install this fork, open
+`chrome://extensions`, enable Developer mode, select **Load unpacked**, and choose the
+`bookmarks-on-new-tab/` directory. See
+[Chrome's unpacked-extension instructions](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
 
-You can also [create an issue](https://github.com/michurin/chrome-extension-bookmarks-on-new-tab/issues) on GitHub,
-or write an email to me at <a.michurin@gmail.com>.
+See [TESTING.md](TESTING.md) for automated checks and the recorded browser validation.
+
+Original upstream:
+[michurin/chrome-extension-bookmarks-on-new-tab](https://github.com/michurin/chrome-extension-bookmarks-on-new-tab).
 
 License:
-[BSD](https://opensource.org/licenses/bsd-license.php)
+[BSD](LICENSE)
