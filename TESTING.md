@@ -23,12 +23,29 @@ JavaScript against small Chrome API and DOM fixtures, and checks the Manifest V3
 toolbar action, bookmark initialization, favicon URL, and link modifiers. These tests do not
 replace a browser run.
 
-## Browser validation recorded on 2026-10-04
+## Repeat the browser smoke test
+
+In PowerShell, provide the path to a Chrome for Testing `chrome.exe`:
+
+```powershell
+$chromeForTesting = Read-Host 'Path to Chrome for Testing chrome.exe'
+& .\tools\browser-smoke.ps1 -ChromePath $chromeForTesting
+```
+
+The smoke test uses [tools/cdp.ps1](tools/cdp.ps1) as its PowerShell/.NET DevTools Protocol
+transport. It starts Chrome headlessly with the unpacked extension and a unique temporary
+profile, verifies the override and browser behaviors listed below, checks extension script
+errors, and stops its Chrome process. It prints the retained profile and Chrome stderr path
+for inspection. It does not touch an existing Chrome profile or require an npm package.
+
+## Browser validation recorded on 2026-10-04 and 2026-10-05
 
 The unpacked extension was loaded in an isolated profile using official Chrome for Testing
 Stable 154.0.8037.92 for Windows, with `--headless=new`, `--load-extension`,
 `--disable-extensions-except`, and an ephemeral DevTools port. A temporary PowerShell/.NET
-DevTools Protocol client drove the browser; that one-off client was not added to the repository.
+DevTools Protocol client drove the browser. Its reusable transport and scenario checks are now
+in [tools/cdp.ps1](tools/cdp.ps1) and [tools/browser-smoke.ps1](tools/browser-smoke.ps1).
+The reusable smoke script was also run successfully on 2026-10-05 with the same browser version.
 
 The browser accepted extension version 0.6.0.0 and resolved `chrome://newtab/` to its new-tab
 page. A nested bookmark fixture rendered with the expected titles and hierarchy, and its favicon
